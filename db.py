@@ -1,7 +1,12 @@
+import os
+
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 
-uri = "mongodb+srv://yuhanxieyx:GMxuzpPiw8Kw75Kf@wikidb.8zvpa.mongodb.net/?appName=WikiDB"
+from dotenv import load_dotenv
+
+load_dotenv()
+uri = os.getenv("MONGO_URI")
 
 # Create a new client and connect to the server
 client = MongoClient(uri, server_api=ServerApi('1'))
