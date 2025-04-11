@@ -30,5 +30,9 @@ async def search(search_query: str, skip: int = 0, limit: int=10) -> dict:
         },
         filter_path=["hits.hits._source, hits.hits._score"]
     )
-    hits = response["hits"]["hits"]
-    return {"hits": hits}
+    if response:
+        hits = response["hits"]["hits"]
+        return {"hits": hits}
+    else:
+        print("no matching results found!")
+        return {"hits": []}
